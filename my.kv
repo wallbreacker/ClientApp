@@ -1,0 +1,1114 @@
+MyLayout:
+    scr_mngr: scr_mngr
+    orientation: 'vertical'
+
+
+    ScreenManager:
+        id: scr_mngr
+        logo:logo
+        invite:invite
+        enter:enter
+        registration:registration
+        user_not_found:user_not_found
+        open_screen:open_screen
+        main_menu:main_menu
+        catalogue:catalogue
+        cart:cart
+        card_baran_okor_bez_kosti:card_baran_okor_bez_kosti
+        card_svin_sheya:card_svin_sheya
+        card_topblade:card_topblade
+
+        Screen:
+            id:logo
+            name:'logo'
+            BoxLayout:
+                orientation: 'vertical'
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                Image:
+                    source:"photos//logo.jpg"
+                    pos_hint: {"center_x": .5, "center_y": .53,}
+
+                    on_touch_down:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+
+        Screen:
+            id:invite
+            name:'invite'
+            FloatLayout:
+
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                Image:
+                    source:"photos//logo.jpg"
+                    size_hint_x: 0.775
+                    allow_stretch: True
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+                Image:
+                    source:"photos//politics.jpg"
+                    size_hint_x: 0.7
+                    allow_stretch: True
+                    pos_hint: {"center_x": .5, "center_y": .4}
+
+
+                Button:
+                    text: "Войти"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.0863}
+
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'enter'
+
+                Button:
+                    text: "Регистрация"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.15}
+
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'registration'
+
+
+        Screen:
+            id: enter
+            name:'enter'
+
+            username: username
+            password: password
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                Image:
+                    source:"photos//logo_without_name.jpg"
+                    size_hint_x: 0.775
+                    allow_stretch: True
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+                Label:
+                    text:"Введите Ваш логин и пароль:"
+                    font_size:11
+                    pos_hint: {"center_x": 0.5, "center_y": 1-0.425}
+
+                TextInput:
+                    id: username
+                    hint_text: 'логин'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.4725}
+                    background_color:245, 245, 220
+
+                TextInput:
+                    id: password
+                    hint_text: 'пароль'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.53125}
+                    background_color:245, 245, 220
+                    password: True
+
+                Button:
+                    text: "Подтвердить"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.0863}
+
+                    on_release:
+                        root.check_data_login()
+
+
+
+                Button:
+                    text: "Вернуться"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.15}
+
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+
+        Screen:
+            id:registration
+            name:'registration'
+            FloatLayout:
+
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                Image:
+                    source:"photos//logo_without_name.jpg"
+                    size_hint_x: 0.775
+                    allow_stretch: True
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+                Label:
+                    text:"Заполните форму:"
+                    font_size:11
+                    pos_hint: {"center_x": 0.5, "center_y": 1-0.425}
+
+                TextInput:
+                    hint_text: 'email'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.4725}
+                    background_color:245, 245, 220
+
+                TextInput:
+                    hint_text: 'пароль'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.53125}
+                    background_color:245, 245, 220
+                    password: True
+
+                TextInput:
+                    id:text_inp_phone_numb
+                    hint_text: '+7 (ХХХ) ХХХ-ХХ-ХХ'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.59}
+                    background_color:245, 245, 220
+
+                TextInput:
+                    hint_text: 'адрес'
+                    font_size: 8
+                    multiline: True
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.64875}
+                    background_color:245, 245, 220
+
+                TextInput:
+                    hint_text: 'имя (необязательно)'
+                    font_size: 8
+                    multiline: False
+                    size_hint: 0.725, 0.0452
+                    pos_hint: {"center_x": 0.5,"center_y": 1-0.7075}
+                    background_color:245, 245, 220
+
+
+
+                Button:
+                    text: "Подтвердить"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.0863}
+
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'open_screen'
+
+                Button:
+                    text: "Вернуться"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.15}
+
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+
+        Screen:
+            id:user_not_found
+            name:'user_not_found'
+            FloatLayout:
+
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+        Screen:
+            id:open_screen
+            name:'open_screen'
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 0.019, 0.384, 0.259
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                Image:
+                    source:"photos//logo_without_name.jpg"
+                    size_hint_x: 0.775
+                    allow_stretch: True
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.75}
+
+                Label:
+                    text:"Спасибо, вы успешно авторизовались!"
+                    font_size:16
+                    pos_hint: {"center_x": 0.5, "center_y": 1-0.425}
+
+                Button:
+                    text: "Начать покупки"
+                    color: 0.01, 0.38, 0.25
+                    font_size:11
+                    background_color: 245, 245, 220
+                    size_hint: 0.725, 0.05375
+                    pos_hint: {"center_x": 0.5,"center_y": 0.0863}
+
+                    on_release:
+                        root.start_order()
+
+
+        Screen:
+            id:main_menu
+            name:'main_menu'
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                Image:
+                    source:"photos//delivery.jpg"
+                    size_hint_x: 0.786
+                    allow_stretch: True
+                    pos_hint: {"center_x": 0.57, "center_y": 0.93}
+
+                MDIconButton:
+                    icon:"menu"
+                    size_hint: 0.086, 0.086
+                    pos_hint: {"center_x": 0.09,"center_y": 0.9}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'catalogue'
+
+                BoxLayout:
+                    orientation:"vertical"
+                    pos_hint: {"center_x": 0.5,"center_y": 0.3}
+
+                    ScrollView:
+                        do_scroll_x: False
+                        size: self.size
+                        GridLayout:
+                            size_hint_y:None
+                            height:self.minimum_height
+                            cols: 2
+                            spacing:"10dp"
+                            padding:"10dp"
+
+                            Label:
+                                text: "Мясо для блюд"
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Label:
+                                text: ""
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Image:
+                                source:'photos/shash_part_of_menu.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/soup_part_of_menu.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/stake_part_of_menu.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/rague.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/jark.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/burger.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Label:
+                                text: "Акции"
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Label:
+                                text: ""
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Image:
+                                source:'photos/baran_okor_bez_kosti.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/svin_sheya.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_svin_sheya'
+
+                            Label:
+                                text: "Рекомендации"
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Label:
+                                text: ""
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Image:
+                                source:'photos/topblade.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_topblade'
+
+                            Image:
+                                source:'photos/tbone.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/baran_okor_bez_kosti.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/ribay.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'invite'
+
+                            Label:
+                                text: "Говядина"
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Label:
+                                text: ""
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Image:
+                                source:'photos/ribay.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/shato.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/govkray.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Image:
+                                source:'photos/striployn.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+                            Label:
+                                text: "<Баранина>"
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Label:
+                                text: ""
+                                bold: True
+                                color: 0,0,0
+                                font_size:14
+
+                            Image:
+                                source:'photos/baran_okor_bez_kosti.jpg'
+                                size_hint_y:None
+                                on_touch_down:
+                                    root.scr_mngr.transition.direction = 'left'
+                                    root.scr_mngr.transition.duration = 1
+                                    root.scr_mngr.current = 'card_baran_okor_bez_kosti'
+
+
+            ActionBar:
+                size:root.width,50
+                background_color:255,255,255
+                type:"bottom"
+
+            MDIconButton:
+                icon:'photos/cart.jpg'
+                size_hint:0.15,0.05
+                pos_hint:{"center_x":0.8,"center_y":0.06}
+                on_press:
+                    root.scr_mngr.transition.direction = 'left'
+                    root.scr_mngr.transition.duration = 1
+                    root.scr_mngr.current = 'cart'
+
+
+            CartSummLabel:
+
+        Screen:
+            id:catalogue
+            name:'catalogue'
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                MDIconButton:
+                    icon:'arrow-left'
+                    pos_hint:{'center_x':0.1,'center_y':0.97}
+                    on_release:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'main_menu'
+
+                MDTextButton:
+                    text:"Рекомендованные товары"
+                    color:0,0,0
+                    font_size:12
+                    bold:True
+                    pos_hint:{'center_x':0.5,'center_y':1-0.0775}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+                MDSeparator:
+                    thickness:'5dp'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.1}
+
+                MDTextButton:
+                    text:"Говядина"
+                    color:0,0,0
+                    font_size:12
+                    bold:True
+                    pos_hint:{'center_x':0.5,'center_y':1-0.165}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+                MDSeparator:
+                    thickness:'5dp'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.1875}
+
+                MDTextButton:
+                    text:"Баранина"
+                    color:0,0,0
+                    font_size:12
+                    bold:True
+                    pos_hint:{'center_x':0.5,'center_y':1-0.2525}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+                MDSeparator:
+                    thickness:'5dp'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.275}
+
+                MDTextButton:
+                    text:"Свинина"
+                    color:0,0,0
+                    font_size:12
+                    bold:True
+                    pos_hint:{'center_x':0.5,'center_y':1-0.34}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+                MDSeparator:
+                    thickness:'5dp'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.3625}
+
+                MDTextButton:
+                    text:"Акции %"
+                    color:0,0,0
+                    font_size:12
+                    bold:True
+                    pos_hint:{'center_x':0.5,'center_y':1-0.4275}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'invite'
+
+                MDSeparator:
+                    thickness:'5dp'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.45}
+
+
+        Screen:
+            id:cart
+            name:'cart'
+
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                FloatLayout:
+                    size_hint:1,0.5275
+                    pos_hint:{'center_x':0.5,'bottom_y':1}
+                    canvas.before:
+                        Color:
+                            rgb: 1, 1, 1
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+
+                FloatLayout:
+                    size_hint:1,0.4725
+                    pos_hint:{'center_x':0.5,'bottom_y':0}
+                    canvas.before:
+                        Color:
+                            rgb: 1, 1, 1
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+
+
+                    BoxLayout:
+                        size_hint:0.844,0.2
+                        pos_hint:{'center_x':0.5,'center_y':1}
+                        orientation:'vertical'
+                        height:self.minimum_height
+                        canvas.before:
+                            Color:
+                                rgb: 0.86, 0.92, 0.8
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+                        Label:
+                            text:'Ваш номер телефона:'
+                            bold:True
+                            font_size:9
+                            color:0,0,0
+                            halign:'left'
+
+                        TextInput:
+                            text:text_inp_phone_numb.text
+                            font_size:9
+                            color:0,0,0
+                            multiline: False
+                            height:self.minimum_height
+                            halign:'center'
+                            background_color:220, 234, 205
+
+                    BoxLayout:
+                        size_hint:0.844,0.25
+                        pos_hint:{'center_x':0.5,'center_y':0.75}
+                        orientation:'vertical'
+                        height:self.minimum_height
+                        canvas.before:
+                            Color:
+                                rgb: 0.86, 0.92, 0.8
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+
+                        Label:
+                            text:'Оплата:'
+                            bold:True
+                            font_size:9
+                            color:0,0,0
+                            halign:'left'
+
+                        Label:
+                            text:'Наличными при получении'
+                            font_size:9
+                            color:0,0,0
+                            halign:'left'
+
+                        Label:
+                            text:'Доставка:'
+                            bold:True
+                            font_size:9
+                            color:0,0,0
+                            halign:'left'
+
+                        BoxLayout:
+                            Label:
+                                text:'Курьер'
+                                font_size:9
+                                color:0,0,0
+                                halign:'left'
+
+                            Label:
+                                text:'0 Р'
+                                bold:True
+                                font_size:9
+                                color:0,0,0
+                                halign:'right'
+
+                    MDRaisedButton:
+                        text: "Продолжить покупки"
+                        text_color: 0, 0, 0
+                        font_size:11
+                        bold: True
+                        md_bg_color: 0.86, 0.92,0.8
+                        size_hint_x: 0.844
+                        size_hint_y: 0.05375
+                        pos_hint:{'center_x':0.5,'center_y':0.35}
+
+                    MDRaisedButton:
+                        text: "Оформить заказ"
+                        text_color: 1, 1, 1
+                        font_size:11
+                        bold: True
+                        md_bg_color: 0.01, 0.38,0.25
+                        size_hint_x: 0.844
+                        size_hint_y: 0.05375
+                        pos_hint:{'center_x':0.5,'center_y':0.173}
+
+
+        Screen:
+            id:card_baran_okor_bez_kosti
+            name:'card_baran_okor_bez_kosti'
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                MDIconButton:
+                    icon:'arrow-left'
+                    pos_hint:{'center_x':0.1,'center_y':0.97}
+                    on_release:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'main_menu'
+
+                Image:
+                    source:'photos/card_baran_okor_bez_kosti.jpg'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.25}
+                    size_hint:0.853,0.38
+
+                BoxLayout:
+                    hint_pos:{"center_x": 0.5,"center_y": 0.6}
+                    spacing:"30dp"
+                    padding:"20dp"
+                    height:self.minimum_height
+
+                    Label:
+                        id:item_name_bar_okor
+                        text:'Бараний окорок б/к'
+                        text_size: self.width, None
+                        color:0,0,0
+                        font_size:17
+                        bold:True
+
+                    Label:
+                        text:'      3 кг'
+                        text_size: self.width, None
+                        color:0.62,0.62,0.62
+                        font_size:17
+                        bold:True
+
+                Label:
+                    text:'1890 Р (-25%)'
+                    value:1890
+                    text_size: self.width, None
+                    color:0.87,0.27,0.27
+                    font_size:14
+                    bold:True
+                    pos_hint:{"center_x": 0.6,"center_y": 0.42}
+
+                AddPanel:
+
+                BoxLayout:
+                    size_hint:0.5,0.1
+                    pos_hint:{"center_x": 0.2,"center_y": 0.37}
+
+                    Label:
+                        text:'Описание:'
+                        font_size:12
+                        color:0,0,0
+                        bold:True
+
+                BoxLayout:
+                    padding:'20dp'
+                    pos_hint:{"left_x": 0.58,"center_y": 0.25}
+
+                    Label:
+                        text:'Нежнейшее мясо без кости. Бараний окорок запекают, отваривают, коптят, тушат и жарят целиком. Из него готовят шашлык, жаркое, бифштексы. В бараньем окороке содержится легко усваиваемый белок, витамины группы В, витамин D, магний, йод, железо, калий. Хранить при темп. от 0 до +5 не более 9 суток, после вскрытия - не более 12 ч.'
+                        font_size:9
+                        color:0,0,0
+                        text_size: self.width, None
+
+                ActionBar:
+                    size:root.width,50
+                    background_color:255,255,255
+                    type:"bottom"
+
+                MDIconButton:
+                    icon:'photos/cart.jpg'
+                    size_hint:0.15,0.05
+                    pos_hint:{"center_x":0.8,"center_y":0.06}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'cart'
+
+                CartSummLabel:
+
+                AddCartButton:
+
+
+        Screen:
+            id:card_svin_sheya
+            name:'card_svin_sheya'
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                MDIconButton:
+                    icon:'arrow-left'
+                    pos_hint:{'center_x':0.1,'center_y':0.97}
+                    on_release:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'main_menu'
+
+                Image:
+                    source:'photos/card_svin_sheya.jpg'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.25}
+                    size_hint:0.853,0.38
+
+                BoxLayout:
+                    hint_pos:{"center_x": 0.5,"center_y": 0.6}
+                    spacing:"30dp"
+                    padding:"20dp"
+                    height:self.minimum_height
+
+                    Label:
+                        text:'Свиная шея'
+                        text_size: self.width, None
+                        color:0,0,0
+                        font_size:17
+                        bold:True
+
+
+                    Label:
+                        text:'    500 г'
+                        text_size: self.width, None
+                        color:0.62,0.62,0.62
+                        font_size:17
+                        bold:True
+
+                Label:
+                    text:'239 Р (-25%)'
+                    value:239
+                    text_size: self.width, None
+                    color:0.87,0.27,0.27
+                    font_size:14
+                    bold:True
+                    pos_hint:{"center_x": 0.6,"center_y": 0.42}
+
+                AddPanel:
+
+
+                BoxLayout:
+                    size_hint:0.5,0.1
+                    pos_hint:{"center_x": 0.2,"center_y": 0.37}
+
+                    Label:
+                        text:'Описание:'
+                        font_size:12
+                        color:0,0,0
+                        bold:True
+
+                BoxLayout:
+                    padding:'20dp'
+                    pos_hint:{"left_x": 0.58,"center_y": 0.25}
+
+                    Label:
+                        text:'Свиная шея – это нежное свиное мясо на шее животного с небольшими прожилками сала. Это прекрасное сочетание жилок с жирком и нежнейшего мяса без накачанных мускулов. Хранить при темп. от 0 до +5 не более 9 суток, после вскрытия - не более 12 ч.'
+                        font_size:9
+                        color:0,0,0
+                        text_size: self.width, None
+
+                ActionBar:
+                    size:root.width,50
+                    background_color:255,255,255
+                    type:"bottom"
+
+                MDIconButton:
+                    icon:'photos/cart.jpg'
+                    size_hint:0.15,0.05
+                    pos_hint:{"center_x":0.8,"center_y":0.06}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'cart'
+
+                CartSummLabel:
+
+                AddCartButton:
+
+        Screen:
+            id:card_topblade
+            name:'card_topblade'
+            FloatLayout:
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+
+                MDIconButton:
+                    icon:'arrow-left'
+                    pos_hint:{'center_x':0.1,'center_y':0.97}
+                    on_release:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'main_menu'
+
+                Image:
+                    source:'photos/card_topblade.jpg'
+                    pos_hint:{'center_x':0.5,'center_y':1-0.25}
+                    size_hint:0.853,0.38
+
+                BoxLayout:
+                    hint_pos:{"center_x": 0.5,"center_y": 0.6}
+                    spacing:"30dp"
+                    padding:"20dp"
+                    height:self.minimum_height
+
+                    Label:
+                        text:'Стейк Топ-блейд '
+                        text_size: self.width, None
+                        color:0,0,0
+                        font_size:17
+                        bold:True
+
+
+                    Label:
+                        text:'    500 г'
+                        text_size: self.width, None
+                        color:0.62,0.62,0.62
+                        font_size:17
+                        bold:True
+
+                Label:
+                    text:'700 Р'
+                    value:700
+                    text_size: self.width, None
+                    color:0,0,0
+                    font_size:14
+                    bold:True
+                    pos_hint:{"center_x": 0.6,"center_y": 0.42}
+
+                AddPanel:
+
+                BoxLayout:
+                    size_hint:0.5,0.1
+                    pos_hint:{"center_x": 0.2,"center_y": 0.37}
+
+                    Label:
+                        text:'Описание:'
+                        font_size:12
+                        color:0,0,0
+                        bold:True
+
+                BoxLayout:
+                    padding:'20dp'
+                    pos_hint:{"left_x": 0.58,"center_y": 0.25}
+
+                    Label:
+                        text:'Стейк Топ-блейд из мраморной говядины вырезается из блейда, который выделяется из лопаточной части. Сочный и нежный альтернативный стейк, лишь немного уступающий по своим характеристикам премиальным стейкам. В приготовлении также прост, как и другие стейки. Хранить при темп. от 0 до +5 не более 9 суток, после вскрытия - не более 12 ч.'
+                        font_size:9
+                        color:0,0,0
+                        text_size: self.width, None
+
+
+                ActionBar:
+                    size:root.width,50
+                    background_color:255,255,255
+                    type:"bottom"
+
+                MDIconButton:
+                    icon:'photos/cart.jpg'
+                    size_hint:0.15,0.05
+                    pos_hint:{"center_x":0.8,"center_y":0.06}
+                    on_press:
+                        root.scr_mngr.transition.direction = 'left'
+                        root.scr_mngr.transition.duration = 1
+                        root.scr_mngr.current = 'cart'
+
+                CartSummLabel:
+
+                AddCartButton:
+
+<AddPanel>:
+    size_hint:0.5,0.1
+    pos_hint:{"center_x": 0.75,"center_y": 0.42}
+
+
+    MDIconButton:
+        icon:'minus'
+        color:0.62,0.62,0.62
+        on_release:
+            label_numb_tov.value-=1 if label_numb_tov.value>0 else 0
+
+    Label:
+        id:label_numb_tov
+        value:0
+        text:str(self.value)
+        color:0,0,0
+        font_size:14
+
+    MDIconButton:
+        icon:'plus'
+        color:0.62,0.62,0.62
+        on_release:
+            label_numb_tov.value+=1
+
+
+<AddCartButton>:
+    text: "Добавить"
+    bold:True
+    color: 1, 1, 1
+    font_size:14
+    md_bg_color: get_color_from_hex('#9e9e9e')
+    size_hint: 0.5, 0.05375
+    pos_hint: {"center_x": 0.3,"center_y": 0.0435}
+
+
+<CartSummLabel>:
+    id:label_summ_cart
+    font_size:9
+    color:0,0,0
+    value:0
+    text:str(self.value)+' Р'
+    bold:True
+    pos_hint:{"center_x":0.8,"center_y":0.025}
